@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js "></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+<script type = "text/babel">
+    
+    function Btn({text, fontSize = 16}){
+        return (
+            <button
+
+                style = { {
+                    backgroundColor : "tomato",
+                    color : "white",
+                    padding : "10px 20px",
+                    border : 0,
+                    borderRadius: 10,
+                    fontSize,
+                
+                } }
+            > 
+            {text} 
+         </button>);
+    }
+
+    //const MemorizedBtn = React.memo(Btn); 
+    //변한것만 새로고침 해줌 
+    
+    Btn.propTypes = {
+        text : PropTypes.string.isRequired,
+        fontSize: PropTypes.number,
+    };
+    //propotype 인자를 잘못 전달 방지
+    //isRequired 필수로 있어야 되는 값을 지정 없으면 경고문
+
+
+    function App (){ 
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Changes");
+
+        return (
+        <div>
+            
+            <Btn text = {value} fontSize = {18} />
+            <Btn text = {"Continue"} />
+        </div>
+        );
+
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+</script>
+</html>
