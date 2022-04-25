@@ -141,8 +141,8 @@ function getMovieDetail() {
                          image.push(html.data.Casting.Items[b].StaffImage);
                     }
                     
-
-                    console.log(image);
+                    const synopsis = html.data.Movie.SynopsisKR;
+                    console.log(synopsis);
                     
             }
            
